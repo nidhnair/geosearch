@@ -37,7 +37,7 @@ public class InsertShapeFileIntoElasticsearch {
 
     public static void main(String[] args) throws Exception {
 
-        String shapefilePath = "/Users/nnair/Documents/geospatial/postgis-workshop/data/nyc_neighborhoods.shp";
+        String shapefilePath = "/Users/nnair/Downloads/tl_2023_48_tract/tl_2023_48_tract.shp";
 
 
         List<SomeShapesfromNYC> someShapesfromNYCS = readSomeShapeFileFromNYC(shapefilePath);
@@ -52,7 +52,7 @@ public class InsertShapeFileIntoElasticsearch {
             // Index documents
 //            createGeometries(nycCityGeometries);'
             ElasticDao elasticDao = new ElasticDao(esClient);
-            elasticDao.createSomeShapeGeometries("nycneighborhoods", someShapesfromNYCS);
+            elasticDao.createSomeShapeGeometries("tl_2023_48_tract", someShapesfromNYCS);
         } finally {
             // Close ElasticsearchClient
 //             esClient.clo()
@@ -76,7 +76,9 @@ public class InsertShapeFileIntoElasticsearch {
                 dataStore.getFeatureSource(typeName);
         Filter filter = Filter.INCLUDE; // ECQL.toFilter("BBOX(THE_GEOM, 10,20,30,40)")
 
-        String wkt = "PROJCS[\"NAD83 / UTM zone 18N\",GEOGCS[\"NAD83\",DATUM[\"North_American_Datum_1983\",SPHEROID[\"GRS 1980\",6378137,298.257222101,AUTHORITY[\"EPSG\",\"7019\"]],AUTHORITY[\"EPSG\",\"6269\"]],PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],UNIT[\"degree\",0.01745329251994328,AUTHORITY[\"EPSG\",\"9122\"]],AUTHORITY[\"EPSG\",\"4269\"]],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],PROJECTION[\"Transverse_Mercator\"],PARAMETER[\"latitude_of_origin\",0],PARAMETER[\"central_meridian\",-75],PARAMETER[\"scale_factor\",0.9996],PARAMETER[\"false_easting\",500000],PARAMETER[\"false_northing\",0],AUTHORITY[\"EPSG\",\"26918\"],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]";
+//        String wkt = "PROJCS[\"NAD83 / UTM zone 18N\",GEOGCS[\"NAD83\",DATUM[\"North_American_Datum_1983\",SPHEROID[\"GRS 1980\",6378137,298.257222101,AUTHORITY[\"EPSG\",\"7019\"]],AUTHORITY[\"EPSG\",\"6269\"]],PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],UNIT[\"degree\",0.01745329251994328,AUTHORITY[\"EPSG\",\"9122\"]],AUTHORITY[\"EPSG\",\"4269\"]],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],PROJECTION[\"Transverse_Mercator\"],PARAMETER[\"latitude_of_origin\",0],PARAMETER[\"central_meridian\",-75],PARAMETER[\"scale_factor\",0.9996],PARAMETER[\"false_easting\",500000],PARAMETER[\"false_northing\",0],AUTHORITY[\"EPSG\",\"26918\"],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]";
+
+       String wkt ="GEOGCS[\"GCS_North_American_1983\",DATUM[\"D_North_American_1983\",SPHEROID[\"GRS_1980\",6378137,298.257222101]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.017453292519943295]]";
 
         String wkt4326 = "GEOGCS[\"WGS 84\",\n" +
                 "    DATUM[\"WGS_1984\",\n" +

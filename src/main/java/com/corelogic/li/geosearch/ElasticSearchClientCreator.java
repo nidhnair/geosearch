@@ -9,7 +9,7 @@ import org.elasticsearch.client.RestClient;
 
 public class ElasticSearchClientCreator {
     // Create ElasticsearchClient
-    static ElasticsearchClient createElasticsearchClient() {
+    public static ElasticsearchClient createElasticsearchClient() {
 
         String serverUrl = "http://localhost:9200";
 

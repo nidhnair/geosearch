@@ -1,14 +1,11 @@
 package com.corelogic.li.geosearch;
 
 import co.elastic.clients.elasticsearch.ElasticsearchClient;
-import co.elastic.clients.elasticsearch._types.GeoDistanceType;
 import co.elastic.clients.elasticsearch._types.GeoShapeRelation;
 import co.elastic.clients.elasticsearch.core.SearchResponse;
 import co.elastic.clients.elasticsearch.core.search.Hit;
 import co.elastic.clients.json.JsonData;
 import org.geotools.api.referencing.FactoryException;
-import org.locationtech.jts.geom.Geometry;
-import org.locationtech.jts.index.strtree.STRtree;
 import org.locationtech.jts.io.ParseException;
 
 import java.io.IOException;

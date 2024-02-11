@@ -3,8 +3,6 @@ package com.corelogic.li.geosearch;
 import co.elastic.clients.elasticsearch.ElasticsearchClient;
 import co.elastic.clients.elasticsearch.core.IndexRequest;
 import co.elastic.clients.elasticsearch.core.IndexResponse;
-import com.corelogic.li.geosearch.InsertShapeFileIntoElasticsearch;
-import com.corelogic.li.geosearch.SomeShapesfromNYC;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 import java.io.IOException;

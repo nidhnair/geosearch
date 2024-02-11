@@ -1,0 +1,51 @@
+PUT /nycneighborhoods
+{
+  "mappings": {
+    "properties": {
+      "id": {
+        "type": "text"
+      },
+      "location": {
+        "type": "geo_shape"
+      }
+    }
+  }
+}
+
+
+PUT /nycCityGeometries
+{
+  "mappings": {
+    "properties": {
+      "id": {
+        "type": "text"
+      },
+      "location": {
+        "type": "geo_shape"
+      },
+      "boroname": {
+        "type": "text"
+      },
+      "name": {
+        "type": "text"
+      }
+    }
+  }
+}
+
+PUT /newshapes
+{
+  "mappings": {
+    "properties": {
+      "id": {
+        "type": "text"
+      },
+      "location": {
+        "type": "geo_shape"
+      },
+      "datetime": {
+        "type": "date",
+        "format": "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd'T'HH:mm:ss.SSSZ||epoch_millis"
+      }
+    }
+  }

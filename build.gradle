@@ -1,0 +1,79 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.2.2'
+    id 'io.spring.dependency-management' version '1.1.4'
+}
+
+group = 'com.corelogic.li'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    sourceCompatibility = '17'
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+
+    mavenCentral()
+    maven {
+        url 'https://repo.osgeo.org/repository/release/'
+        artifactUrls 'https://repo.osgeo.org/repository/release/'
+    }
+}
+
+dependencies {
+    // implementation 'org.springframework.boot:spring-boot-starter-data-elasticsearch'
+    implementation 'org.springframework.boot:spring-boot-starter-graphql'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    // JTS Topology Suite
+    implementation 'org.locationtech.jts:jts-core:1.19.0'
+
+    implementation 'co.elastic.clients:elasticsearch-java:8.12.0'
+//    implementation 'com.fasterxml.jackson.core:jackson-databind:2.12.3'
+    implementation 'jakarta.json:jakarta.json-api:2.0.1'
+
+    implementation('org.geotools:gt-shapefile:30.1') {
+
+        exclude group: 'javax.media', module: 'jai_core'
+    }
+
+
+    implementation('org.geotools:gt-geometry:24.6') {
+
+        exclude group: 'javax.media', module: 'jai_core'
+
+    }
+
+    implementation('org.geotools:gt-opengis:2.7.4') {
+        exclude group: 'javax.media', module: 'jai_core'
+    }
+
+    implementation (group: 'org.geotools', name: 'gt-epsg-hsql', version: '22.2'){
+        exclude group: 'javax.media', module: 'jai_core'
+    }
+
+    implementation 'javax.measure:unit-api:2.1'
+    // https://mvnrepository.com/artifact/com.google.geometry/s2-geometry
+    implementation 'com.google.geometry:s2-geometry:2.0.0'
+
+
+
+    // Apache Commons Math (For random number generation)
+    implementation 'org.apache.commons:commons-math3:3.6.1'
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework:spring-webflux'
+    testImplementation 'org.springframework.graphql:spring-graphql-test'
+
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}

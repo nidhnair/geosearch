@@ -32,25 +32,25 @@ public class SubwayFunctions {
          List<SomeShapesfromNYC> someShapesfromNYCS =  findNearbySubwayStations(es, identifiedStationLocation);
 
         int numnearest = 10;
-//        List<SomeShapesfromNYC> nearestNeighborShapes = findNearestNeighbors(identifiedStationLocation, someShapesfromNYCS, numnearest);
+     List<SomeShapesfromNYC> nearestNeighborShapes = findNearestNeighbors(identifiedStationLocation, someShapesfromNYCS, numnearest);
 
         System.out.println( numnearest +" nearest are: ");
 
         ElasticDao elasticDao = new ElasticDao(es);
 
-//        elasticDao.createSomeShapeGeometries("newshapes", nearestNeighborShapes);
+        elasticDao.createSomeShapeGeometries("newshapes", nearestNeighborShapes);
 
         for (SomeShapesfromNYC someShapesfromNYC : someShapesfromNYCS) {
             System.out.println(someShapesfromNYC.getAttributeMap().get("LONG_NAME"));
         }
 
-      List<SomeShapesfromNYC> testellationList =  createTessellation(someShapesfromNYCS);
+//      List<SomeShapesfromNYC> testellationList =  createTessellation(nearestNeighborShapes);
 
-        elasticDao.createSomeShapeGeometries("newshapes", testellationList);
+//        elasticDao.createSomeShapeGeometries("newshapes", testellationList);
 
-//        List<SomeShapesfromNYC> triangulationList =  createDelaunayTriangulation(nearestNeighborShapes);
-//
-//        elasticDao.createSomeShapeGeometries("newshapes", triangulationList);
+        List<SomeShapesfromNYC> triangulationList =  createDelaunayTriangulation(nearestNeighborShapes);
+
+        elasticDao.createSomeShapeGeometries("newshapes", triangulationList);
 
     }
 

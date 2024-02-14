@@ -61,7 +61,7 @@ dependencies {
     implementation 'javax.measure:unit-api:2.1'
     // https://mvnrepository.com/artifact/com.google.geometry/s2-geometry
     implementation 'com.google.geometry:s2-geometry:2.0.0'
-
+    implementation 'org.locationtech.jts.io:jts-io-common:1.19.0'
 
 
     // Apache Commons Math (For random number generation)

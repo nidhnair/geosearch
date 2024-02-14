@@ -52,3 +52,6 @@ PUT /newshapes
       }
     }
   }
+}
+
+java -D"dw.graphhopper.datareader.file=berlin-latest.osm.pbf" -jar graphhopper*.jar server config-example.yml
